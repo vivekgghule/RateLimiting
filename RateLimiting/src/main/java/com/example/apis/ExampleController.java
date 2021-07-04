@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.myannotations.Limit;
+
 /**
  * @author vivek
  *
@@ -18,9 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ExampleController {
 	
-	@GetMapping(path="/greet")
+	@GetMapping(path="/limited")
+	@Limit
 	public ResponseEntity<Object> sampleApi(@RequestParam("tenant") String tenant) {
-		return new ResponseEntity<Object>("Hello World..!",HttpStatus.OK);
+		return new ResponseEntity<Object>("This is Limited API..!",HttpStatus.OK);
+	}
+	
+	@GetMapping(path="/unlimited")
+	public ResponseEntity<Object> sampleunlimitedApi(@RequestParam("tenant") String tenant) {
+		return new ResponseEntity<Object>("This is unrestricted API!",HttpStatus.OK);
 	}
 
 }

@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
 @EnableScheduling
 public class RateService {
 	
-	private static Map<String,Integer> defaultMap = new HashMap<>(Map.of("tenant1", 5, "tenant2", 10));
-	private static Map<String,Integer> limitMap = new HashMap<>(Map.of("tenant1", 5, "tenant2", 10));
+	private static Map<String,Integer> defaultMap = new HashMap<>(Map.of("default", 2,"tenant1", 5, "tenant2", 10));
+	private static Map<String,Integer> limitMap = new HashMap<>(Map.of("default", 2,"tenant1", 5, "tenant2", 10));
 	
 	public int checkLimit(String tenant) {
 		int currentUsage = limitMap.get(tenant);
